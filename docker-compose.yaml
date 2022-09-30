@@ -1,0 +1,20 @@
+version: "3.1"
+
+services:
+  db:
+    image: postgres:14.2-alpine
+    restart: always
+    container_name: myStock-dev
+    environment:
+      POSTGRES_USER: myStock-dev
+      POSTGRES_PASSWORD: myStock-dev
+      POSTGRES_DB: myStock-dev
+      PGDATA: /var/lib/postgresql/data/myStock-dev
+    ports:
+      - "5432:5432"
+    tty: true
+    networks:
+      - mystock-api
+
+networks:
+  mystock-api:

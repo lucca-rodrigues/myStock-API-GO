@@ -13,8 +13,8 @@ import (
 var db *gorm.DB
 
 func StartDB(){
-	// connection := "host=localhost port=5432 user=admin dbname=api-golang sslmode=disable password=api-golang"
-	connection := "host=innova-systems.tec.br port=49153 user=finances dbname=myStock-dev sslmode=disable password=financesprod"
+	connection := "host=localhost port=5432 user=myStock-dev dbname=myStock-dev sslmode=disable password=myStock-dev"
+	// connection := "host=innova-systems.tec.br port=49153 user=finances dbname=myStock-dev sslmode=disable password=financesprod"
 
 	database, err := gorm.Open(postgres.Open(connection), &gorm.Config{})
 
