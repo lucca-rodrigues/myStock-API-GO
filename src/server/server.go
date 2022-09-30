@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lucca-rodrigues/myStock-API-GO/src/server/routes"
 )
 
 type Server struct {
