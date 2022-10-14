@@ -4,17 +4,17 @@ services:
   db:
     image: postgres:14.2-alpine
     restart: always
-    container_name: myStock-dev
+    container_name: myStock-db
     environment:
-      POSTGRES_USER: myStock-dev
-      POSTGRES_PASSWORD: myStock-dev
-      POSTGRES_DB: myStock-dev
-      PGDATA: /var/lib/postgresql/data/myStock-dev
+      POSTGRES_USER: myStock-db
+      POSTGRES_PASSWORD: myStock-db
+      POSTGRES_DB: myStock-db
+      PGDATA: /var/lib/postgresql/data/myStock-db
     ports:
       - "5432:5432"
     tty: true
     networks:
-      - mystock-api
+      - mystock-db
 
 networks:
-  mystock-api:
+  mystock-db:
