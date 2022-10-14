@@ -7,7 +7,7 @@ RUN go mod download
 
 COPY . ./
 
-RUN go build main.go
+RUN go build -o main.go
 
 FROM debian:buster-slim
 
@@ -18,3 +18,5 @@ FROM debian:buster-slim
 COPY --from=builder /app/main /app/main
 
 CMD ["./app/main"]
+
+EXPOSE 3333
