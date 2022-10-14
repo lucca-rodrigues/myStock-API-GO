@@ -38,11 +38,11 @@ jobs:
         uses: appleboy/ssh-action@v0.1.4
         with:
           # host: 137.184.24.93
-          # username: root
+          username: root
           # password: Finan1cEs
           host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERT }}
-          password: Finan1cEs
+          # username: ${{ secrets.SERVER_USERT }}
+          password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             ls -la
             cd MyStock-API
