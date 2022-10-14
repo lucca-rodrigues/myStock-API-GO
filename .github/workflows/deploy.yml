@@ -42,7 +42,7 @@ jobs:
           # password: Finan1cEs
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERT }}
-          password: ${{ secrets.SERVER_PASSWORD }}
+          password: Finan1cEs
           script: |
             ls -la
             cd MyStock-API
