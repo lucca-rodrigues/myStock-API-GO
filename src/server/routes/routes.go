@@ -13,6 +13,10 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		// 	route.GET("/users", controllers.Find)
 		// 	route.POST("/users", controllers.Create)
 		// }
+		main.GET("/", func(c *gin.Context) {
+			c.JSON(200, "Ok api started")
+		})
+
 		main.GET("/users", controllers.Find)
 		main.POST("/users", controllers.Create)
 		main.GET("/products", controllers.FindAllProducts)
