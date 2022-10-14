@@ -32,6 +32,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api:latest
   start-app:
+    needs: build-app
     runs-on: ubuntu-latest
     steps:
       - name: Repository checkout
@@ -48,6 +49,7 @@ jobs:
           script: |
             ls -la
             cd MyStock-API
+            docker compose up -d
 
   # build_docker:
   #   needs: build-app
