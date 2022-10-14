@@ -8,11 +8,15 @@ import (
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	main := router.Group("api/v1")
 	{
-		users := main.Group("users")
-		{
-			users.GET("/", controllers.Find)
-			users.POST("/", controllers.Create)
-		}
+		// route := main.Group("users")
+		// {
+		// 	route.GET("/users", controllers.Find)
+		// 	route.POST("/users", controllers.Create)
+		// }
+		main.GET("/users", controllers.Find)
+		main.POST("/users", controllers.Create)
+		main.GET("/products", controllers.FindAllProducts)
+		main.POST("/products", controllers.CreateProduct)
 	}
 	return router
 }
