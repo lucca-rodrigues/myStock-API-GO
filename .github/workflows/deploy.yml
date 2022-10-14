@@ -49,7 +49,7 @@ jobs:
           script: |
             ls -la
             cd MyStock-API
-            docker stop luccarodrigues/mystock_api
+            docker rm -f mystock_api
             docker pull luccarodrigues/mystock_api
             docker run -it -d -p 3333:3333 --name mystock_api luccarodrigues/mystock_api
           # docker-compose up -d
