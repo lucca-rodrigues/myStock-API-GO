@@ -11,7 +11,7 @@ services:
       POSTGRES_DB: myStock-db
       PGDATA: /var/lib/postgresql/data/myStock-db
     ports:
-      - "5432:5432"
+      - "49155:5432"
     tty: true
     networks:
       - mystock-db
