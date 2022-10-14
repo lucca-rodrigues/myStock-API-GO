@@ -31,11 +31,12 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api:latest
+
   build_docker:
-    # The type of runner that the job will run on
+    needs: build-app
+
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Repository checkout
         uses: actions/checkout@v2
 
@@ -45,7 +46,6 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          # key: ${{ secrets.SSH_DIGITAL_OCEAN_PRIVATE_KEY }}
           script: |
             ls -la
             cd MyStock-API
@@ -53,4 +53,4 @@ jobs:
             sudo git pull
             docker stop mystock_api
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api
-            docker run -it -d --name mystock_api ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api
+            docker run -it -d --name mystock_api luccarodrigues/mystock_api
