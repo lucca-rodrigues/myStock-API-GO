@@ -8,13 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 16
-      - run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api:latest .
 
-      # - name: Set up QEMU
-      #   uses: docker/setup-qemu-action@v1
+      - run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api:latest .
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -31,6 +26,7 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api:latest
+
   start-app:
     needs: build-image
     runs-on: ubuntu-latest
@@ -41,11 +37,12 @@ jobs:
       - name: Connects to VPS via SSH
         uses: appleboy/ssh-action@v0.1.4
         with:
-          host: 137.184.24.93
-          # port: 22
-          username: root
-          password: Finan1cEs
-          # key: ${{ secrets.SSH_DIGITAL_OCEAN_PRIVATE_KEY }}
+          # host: 137.184.24.93
+          # username: root
+          # password: Finan1cEs
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERT }}
+          password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             ls -la
             cd MyStock-API
