@@ -32,7 +32,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mystock_api:latest
   start-app:
-    needs: build-app
+    needs: build-image
     runs-on: ubuntu-latest
     steps:
       - name: Repository checkout
